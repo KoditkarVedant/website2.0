@@ -25,40 +25,6 @@ a {
   }
 }
 
-.App-header {
-  background-color: transparent;
-  min-height: 10vh;
-  color: #1f1f1f;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 50px;
-  align-items: center;
-  z-index: 1;
-}
-
-.App-header-nav {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.App-header-nav > li > a {
-  padding: .4rem .6rem;
-  font-size: 20px;
-  color: #f2f2f2;
-}
-
-.App-header-nav > li > a:hover {
-  background: black;
-  border-radius: 9px;
-}
-
-.App-header-name {
-  font-weight: 500;
-}
-
 main {
   min-height: 80vh;
 }
