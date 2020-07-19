@@ -18,10 +18,18 @@ const transformToMetadataObject = (metadataLines: string[]) => {
     return obj
 }
 
-export const allBlogs = async (): Promise<string[]> => {
+export interface IBlog {
+    id: string,
+    title: string,
+    date: string,
+    description: string,
+    sneakpeek: string
+}
+
+export const allBlogs = async (): Promise<IBlog[]> => {
     const blogs = context.keys().map(context) as any[]
 
-    let allBlogs: any[] = blogs.map(blog => {
+    let allBlogs: IBlog[] = blogs.map(blog => {
         let data = blog.default
         let lines = data.split('\n')
 

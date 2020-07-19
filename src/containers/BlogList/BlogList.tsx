@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import map from 'lodash/map'
 import ReactMarkdown from 'react-markdown'
+import { allBlogs, IBlog } from '../../util'
 
-const BlogList = ({ blogs }) => {
+const BlogList = () => {
+    const [blogs, setBlogs] = useState<IBlog[]>([])
+
+    useEffect(() => {
+        if (blogs.length === 0) {
+            console.log('loading')
+            allBlogs().then(setBlogs)
+        }
+    })
+
     return (
         <>
             {map(blogs, blog => (
