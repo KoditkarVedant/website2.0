@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BlogList from './containers/BlogList'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import './App.css';
 import { allBlogs } from './util'
 import {
@@ -33,9 +34,7 @@ function App() {
           </Route>
         </Switch>
       </main>
-      <footer>
-        © {new Date().getFullYear()}, simplified.io
-      </footer>
+      <Footer />
     </Router>
   );
 }
