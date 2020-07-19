@@ -30,11 +30,6 @@ const HeaderWrapper = styled.header`
         font-size: 20px;
     }
     
-    & > .App-header-nav > li > a:hover {
-        background: black;
-        border-radius: 9px;
-    }
-    
     & > .App-header-name {
         font-weight: 500;
     }
