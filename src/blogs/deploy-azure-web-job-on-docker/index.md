@@ -1,8 +1,8 @@
 ---
-id: 1
+id: deploy-azure-web-job-on-docker
 title: Deploy Azure web job on Docker
-date: "2019-08-16T23:46:37.121Z"
-description: "deploy azure web job on docker 🐳🐳🐳"
+date: 2019-08-16T23:46:37.121Z
+description: deploy azure web job on docker 🐳🐳🐳
 ---
 ### What is WebJobs SDK?
 
