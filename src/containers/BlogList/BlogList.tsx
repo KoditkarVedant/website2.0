@@ -1,7 +1,29 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import map from 'lodash/map'
 import ReactMarkdown from 'react-markdown'
 import { allBlogs, IBlog } from '../../util'
+
+const Blog = styled.div`
+    & > .Blog__title {
+        font-size: 28px;
+    }
+
+    & > .Blog__date {
+        font-size: 16px;
+    }
+
+    & > .Blog__description {
+        font-size: 18px;
+    }
+`
+
+const BlogListWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+`
+
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState<IBlog[]>([])
@@ -14,18 +36,17 @@ const BlogList = () => {
     })
 
     return (
-        <>
+        <BlogListWrapper>
             {map(blogs, blog => (
-                <div key={blog.id}>
-                    <div>{blog.title}</div>
-                    <div>{blog.date}</div>
-                    <div>{blog.description}</div>
+                <Blog key={blog.id}>
+                    <p className="Blog__title">{blog.title}</p>
+                    <p className="Blog__date">{blog.date}</p>
                     <div className="markdown-body">
                         <ReactMarkdown source={blog.sneakpeek} />
                     </div>
-                </div>
+                </Blog>
             ))}
-        </>
+        </BlogListWrapper>
     )
 }
 
