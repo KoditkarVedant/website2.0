@@ -43,6 +43,10 @@ const HomeWrapper = styled.div`
         font-size: 26px;
         text-align: center;
 
+        & > .description {
+            margin-bottom: 10px;
+        }
+
         & > .social-accounts > a {
             margin-right: 20px;
         }
@@ -72,7 +76,7 @@ const Home = () => {
             <br />
             <br />
             <div className="social">
-                <p>{"Let's connect"}</p>
+                <p className="description">{"Let's connect"}</p>
                 <div className="social-accounts">
                     <a href="https://github.com/KoditkarVedant" target="_blank">
                         <img src={github} height="50" width="50" />
