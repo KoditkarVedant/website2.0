@@ -13,6 +13,11 @@ const HeaderWrapper = styled.header`
     align-items: center;
     z-index: 1;
   
+    & a {
+        text-decoration: none;
+        color: #f2f2f2;
+    }
+
     & > .App-header-nav {
         list-style: none;
         display: flex;
@@ -23,7 +28,6 @@ const HeaderWrapper = styled.header`
     & > .App-header-nav > li > a {
         padding: .4rem .6rem;
         font-size: 20px;
-        color: #f2f2f2;
     }
     
     & > .App-header-nav > li > a:hover {

@@ -10,45 +10,18 @@ body {
 }
 
 a {
-  text-decoration: none;
+  color: #ff624d;
+}
+
+a:hover {
   color: #f2f2f2;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  text-shadow: 2px 2px #ff624d;
 }
 
 main {
   min-height: 80vh;
 }
 
-main > section {
-  opacity: 0.9;
-  min-height: 80vh;
-  clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 footer {
   min-width: 10vh;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
