@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
         <header className="App-header">
-            <h1 className="App-header-name">VEDANT</h1>
+            <h1 className="App-header-name">
+                <Link to="/">{'VEDANT'}</Link>
+            </h1>
             <ul className="App-header-nav">
-                <li>{'Blogs'}</li>
+                <li><Link to="/blogs">{'Blogs'}</Link></li>
                 <li>{'About'}</li>
             </ul>
         </header>

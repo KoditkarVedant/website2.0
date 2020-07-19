@@ -5,6 +5,8 @@
 
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
+  background-color: #1f1f1f;
+  color: #f2f2f2;
 }
 
 .App-logo {
@@ -22,10 +24,6 @@ body {
   background-color: transparent;
   min-height: 10vh;
   color: #1f1f1f;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,14 +43,12 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 main > section {
   opacity: 0.9;
-  background-color: #ff624d;
-  color: #1f1f1f;
-  min-height: 90vh;
+  min-height: 80vh;
   clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
 
   display: flex;
@@ -61,12 +57,8 @@ main > section {
   align-items: center;
 }
 
-body {
-  background-color: #1f1f1f;
-}
-
-.App-link {
-  color: #61dafb;
+footer {
+  min-width: 10vh;
 }
 
 @keyframes App-logo-spin {
