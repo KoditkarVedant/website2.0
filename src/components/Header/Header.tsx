@@ -8,8 +8,16 @@ const Header = () => {
                 <Link to="/">{'VEDANT'}</Link>
             </h1>
             <ul className="App-header-nav">
-                <li><Link to="/blogs">{'Blogs'}</Link></li>
-                <li>{'About'}</li>
+                <li>
+                    <Link to="/blogs">
+                        {'Blogs'}
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/">
+                        {'About'}
+                    </Link>
+                </li>
             </ul>
         </header>
     )
