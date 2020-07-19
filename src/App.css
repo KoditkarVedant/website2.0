@@ -1,4 +1,10 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', Helvetica, sans-serif;
 }
 
 .App-logo {
@@ -13,14 +19,50 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: transparent;
+  min-height: 10vh;
+  color: #1f1f1f;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 50px;
+  align-items: center;
+  z-index: 1;
+}
+
+.App-header-nav {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.App-header-name {
+  font-weight: 500;
+}
+
+main {
   min-height: 100vh;
+}
+
+main > section {
+  opacity: 0.9;
+  background-color: #ff624d;
+  color: #1f1f1f;
+  min-height: 90vh;
+  clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+
+body {
+  background-color: #1f1f1f;
 }
 
 .App-link {
