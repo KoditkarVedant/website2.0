@@ -38,9 +38,6 @@ const HeaderWrapper = styled.header`
 const Header = () => {
     return (
         <HeaderWrapper>
-            <h1 className="App-header-name">
-                <Link to="/">{'VEDANT'}</Link>
-            </h1>
             <ul className="App-header-nav">
                 <li>
                     <Link to="/blogs">
