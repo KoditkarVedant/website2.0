@@ -1,0 +1,53 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildJob
+        steps:
+        - script: |
+            yarn install
+            yarn run build
+          displayName: 'yarn install and build'
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Build.SourcesDirectory)/build'
+            Contents: '**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)/website'
+            preserveTimestamp: true
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/website'
+            ArtifactName: 'website'
+            publishLocation: 'Container'
+
+
+  - stage: Prod
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - deployment:
+        displayName: deploy to netlify
+        environment: Prod
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: UseNode@1
+                  inputs:
+                    version: '10.x'
+
+                - task: install@1
+                  inputs:
+                    version:
+
+                - task: deploy@1
+                  inputs:
+                    authToken: '$(NETLIFY_PAT)'
+                    siteId: $(WEBSITE_SITE_ID)
+                    sourceDirectory: '$(Pipeline.Workspace)/website/'
+                    isValidationOnly: false
