@@ -47,7 +47,7 @@ stages:
 
                 - task: deploy@1
                   inputs:
-                    authToken: '$NETLIFY_PAT'
+                    authToken: '$(NETLIFY_PAT)'
                     siteId: $(WEBSITE_SITE_ID)
                     sourceDirectory: '$(Pipeline.Workspace)/website/'
                     isValidationOnly: false
