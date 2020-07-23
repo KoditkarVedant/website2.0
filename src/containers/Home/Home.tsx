@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import twitter from './twitter.svg'
-import github from './github.svg'
-import linkedin from './linkedin.svg'
+import SocialLinks from './SocialLinks'
 
 const HomeWrapper = styled.div`
     opacity: 0.9;
@@ -38,19 +36,6 @@ const HomeWrapper = styled.div`
             margin-bottom: 10px;
         }
     }
-
-    & > .social {
-        font-size: 26px;
-        text-align: center;
-
-        & > .description {
-            margin-bottom: 10px;
-        }
-
-        & > .social-accounts > a {
-            margin-right: 20px;
-        }
-    }
 `
 
 const Home = () => {
@@ -75,20 +60,7 @@ const Home = () => {
             </div>
             <br />
             <br />
-            <div className="social">
-                <p className="description">{"Let's connect"}</p>
-                <div className="social-accounts">
-                    <a href="https://github.com/KoditkarVedant" target="_blank">
-                        <img src={github} height="50" width="50" />
-                    </a>
-                    <a href="https://twitter.com/vedantkoditkar" target="_blank">
-                        <img src={twitter} height="50" width="50" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/vedantkoditkar" target="_blank">
-                        <img src={linkedin} height="50" width="50" />
-                    </a>
-                </div>
-            </div>
+            <SocialLinks />
         </HomeWrapper>
     )
 }
