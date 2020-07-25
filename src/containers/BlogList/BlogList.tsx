@@ -32,7 +32,6 @@ const BlogList = () => {
 
     useEffect(() => {
         if (blogs.length === 0) {
-            console.log('loading')
             allBlogs().then(setBlogs)
         }
     }, [blogs, setBlogs])

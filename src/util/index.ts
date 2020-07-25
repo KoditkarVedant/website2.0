@@ -23,14 +23,14 @@ const transformToMetadataObject = (metadataLines: string[]) => {
 export const allBlogs = async (): Promise<IBlog[]> => {
     const blogs = context.keys().map(context) as any[]
 
-    let allBlogs: IBlog[] = blogs.map(blog => {
-        let data = blog.default
-        let lines = data.split('\n')
+    const allBlogs: IBlog[] = blogs.map(blog => {
+        const data = blog
+        const lines = data.split('\n')
 
-        let indexes = getMetadataSectionIndexes(lines)
-        let metadataLines = lines.slice(indexes[0] + 1, indexes[1])
+        const indexes = getMetadataSectionIndexes(lines)
+        const metadataLines = lines.slice(indexes[0] + 1, indexes[1])
         let metadata: any = transformToMetadataObject(metadataLines)
-        metadata['sneakpeek'] = lines.slice(indexes[1] + 1, indexes[1] + 1 + 3).join('\n')
+        metadata['sneakpeek'] = lines.slice(indexes[1] + 1, indexes[1] + 1 + 6).join('\n')
 
         return metadata
     })

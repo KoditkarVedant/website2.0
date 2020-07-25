@@ -1,10 +1,9 @@
 ---
 id: connect-to-local-sql-server-from-docker-container
 title: Connect to Local Sql Server from Docker container
-date: "2020-05-25T23:46:37.121Z"
-description: "connect to local sql server within docker container"
+date: 2020-05-25T23:46:37.121Z
+description: connect to local sql server within docker container
 ---
-
 In this post, I will show you how to connect from an app running in a docker container to a local SQL express/server running in your machine.
 
 > Please note that the SQL Server is not running inside a docker container but it is installed on my dev machine.

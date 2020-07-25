@@ -13,13 +13,13 @@ const HomeWrapper = styled.div`
     align-items: center;
 
     & > .greet {
-        font-size: 78px;
+        font-size: 20px;
         font-style: italic;
-        margin-bottom: 50px;
-        
+        text-align: center;
+
         & > .author {
             color: #f2f2f2;
-            text-shadow: 5px 5px #ff624d;
+            text-shadow: 2px 2px #ff624d;
         }
 
         & > .pronounce {
@@ -34,6 +34,23 @@ const HomeWrapper = styled.div`
 
         & > p {
             margin-bottom: 10px;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        & > .greet {
+            font-size: 58px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        & > .greet {
+            font-size: 78px;
+
+            & > .author {
+                color: #f2f2f2;
+                text-shadow: 5px 5px #ff624d;
+            }
         }
     }
 `
