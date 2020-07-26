@@ -1,4 +1,7 @@
 import { IBlog } from './util.types'
+import format from 'date-fns/format'
+import size from 'lodash/size'
+import words from 'lodash/words'
 
 const context = require.context('../blogs/', true, /.+\.md$/)
 
@@ -20,6 +23,9 @@ const transformToMetadataObject = (metadataLines: string[]) => {
     return obj
 }
 
+const WORDS_PER_MINUTE = 200
+const calculateReadTime = (str: string): number => size(words(str, /\w+/g)) / WORDS_PER_MINUTE
+
 export const allBlogs = async (): Promise<IBlog[]> => {
     const blogs = context.keys().map(context) as any[]
 
@@ -31,6 +37,7 @@ export const allBlogs = async (): Promise<IBlog[]> => {
         const metadataLines = lines.slice(indexes[0] + 1, indexes[1])
         let metadata: any = transformToMetadataObject(metadataLines)
         metadata['sneakpeek'] = lines.slice(indexes[1] + 1, indexes[1] + 1 + 6).join('\n')
+        metadata['readTime'] = calculateReadTime(lines.slice(indexes[1] + 1).join('\n'))
 
         return metadata
     })
@@ -47,6 +54,9 @@ export const getBlog = async (id: string): Promise<IBlog | undefined> => {
     let metadataLines = lines.slice(indexes[0] + 1, indexes[1])
     let metadata: any = transformToMetadataObject(metadataLines)
     metadata['data'] = lines.slice(indexes[1] + 1).join('\n')
+    metadata['readTime'] = calculateReadTime(lines.slice(indexes[1] + 1).join('\n'))
 
     return metadata;
 }
+
+export const dateFormatter = (date: string) => format(new Date(date), 'MMM dd, yyyy')

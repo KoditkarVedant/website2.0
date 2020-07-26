@@ -4,5 +4,6 @@ export interface IBlog {
     date: string,
     description: string,
     sneakpeek: string,
-    data: string
+    data: string,
+    readTime: number
 }

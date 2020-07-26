@@ -7,6 +7,7 @@ const MarkdownWrapper = styled.div`
     width: 100%;
     margin: auto;
     line-height: 160%;
+    font-size: 18px;
 
     pre {
         background: #111;

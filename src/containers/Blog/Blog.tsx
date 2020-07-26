@@ -1,9 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { getBlog } from '../../util'
+import { getBlog, dateFormatter } from '../../util'
 import { IBlog } from '../../util/util.types'
 import { useParams } from 'react-router-dom'
 import Prism from 'prismjs'
 import Markdown from '../../components/Markdown'
+import styled from 'styled-components'
+import ReadTime from '../../components/ReadTime'
+
+const BlogWrapper = styled.div`
+    .blog__metadata {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+
+        & > * {
+            margin: 0 8px;
+        }
+
+        & > :first-child {
+            margin-left: 0;
+        }
+    }
+`
 
 const Blog = () => {
     const [blog, setBlog] = useState<IBlog | undefined>()
@@ -26,7 +44,14 @@ const Blog = () => {
     }
 
     return (
-        <Markdown source={blog.data} className="markdown-body" />
+        <BlogWrapper>
+            <h1>{blog.title}</h1>
+            <p className="blog__metadata">
+                <span className="blog__date">{dateFormatter(blog.date)}</span>
+                <ReadTime className="blog__readTime" minutes={blog.readTime} />
+            </p>
+            <Markdown source={blog.data} className="markdown-body" />
+        </BlogWrapper>
     )
 }
 
