@@ -9,16 +9,15 @@ const HomeWrapper = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     & > .greet {
-        font-size: 20px;
         font-style: italic;
+        font-size: 24px;
         text-align: center;
 
         & > .author {
-            color: #f2f2f2;
+            display: block;
+            font-size: 28px;
             text-shadow: 2px 2px #ff624d;
         }
 
@@ -28,7 +27,7 @@ const HomeWrapper = styled.div`
     }
 
     & > .intro {
-        font-size: 30px;
+        font-size: 16px;
         font-style: italic;
         text-align: center;
 
@@ -36,20 +35,56 @@ const HomeWrapper = styled.div`
             margin-bottom: 10px;
         }
     }
-
+    
+    /* Small devices (portrait tablets and large phones, 600px and up) */
     @media only screen and (min-width: 600px) {
         & > .greet {
-            font-size: 58px;
+            font-size: 24px;
+    
+            & > .author {
+                font-size: 32px;
+                text-shadow: 2px 2px #ff624d;
+            }
+        }
+    
+        & > .intro {
+            font-size: 24px;
+        }
+    }
+      
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+
+        & > .greet {
+            font-size: 32px;
+
+            & > .author {
+                font-size: 64px;
+                text-shadow: 3px 3px #ff624d;
+            }
+        }
+
+        & > .intro {
+            font-size: 24px;
         }
     }
 
-    @media only screen and (min-width: 768px) {
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
         & > .greet {
-            font-size: 78px;
+            font-size: 58px;
 
             & > .author {
-                color: #f2f2f2;
+                font-size: 78px;
                 text-shadow: 5px 5px #ff624d;
+            }
+        }
+
+        & > .intro {
+            font-size: 30px;
+
+            & > p {
+                margin-bottom: 10px;
             }
         }
     }
@@ -63,7 +98,6 @@ const Home = () => {
                 <span className="author">
                     {"VEDANT KODITKAR"}
                 </span>
-                {/* <span className="pronounce">{" [😄 Pronouns: vai-daant]"}</span> */}
             </h1>
             <div className="intro">
                 <p>{"I'm a full stack .Net developer from Pune IN."}</p>
@@ -75,8 +109,6 @@ const Home = () => {
                 <p>{"You can ask me about .Net Core, DevOps, C#, Docker, ReactJS and Cricket (Sport)."}</p>
                 <p>{"⚡ Fun Fact: I can code"}</p>
             </div>
-            <br />
-            <br />
             <SocialLinks />
         </HomeWrapper>
     )
