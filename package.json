@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.1",
+    "babel-plugin-prismjs": "^2.0.1",
     "date-fns": "^2.15.0",
     "lodash": "^4.17.15",
     "markdown-image-loader": "^2.0.0",
