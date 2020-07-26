@@ -141,7 +141,7 @@ Before we deploy this app on docker we need to make changes to our `appsettings.
 
 ```json
 {
-  "AzureWebJobsStorage": "UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://host.docker.internal"
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://host.docker.internal"
 }
 ```
 

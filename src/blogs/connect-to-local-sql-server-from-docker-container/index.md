@@ -24,53 +24,49 @@ To solve this problem, we need to enable the TCP/IP protocol over the network fo
 
 ### How to Enable TCP/IP protocol over a network
 
-To enable TCP/IP protocol you need to open the SQL Server manager tool.
+1. To enable TCP/IP protocol you need to open the SQL Server manager tool.
+    - #### Before Widows 8
+  
+      Search in Windows start for "SQL Server Configuration Manager"
+  
+      ![Sql Server Configuration Manager.png](SqlServerConfigurationManager.png)
+  
+    - #### Windows 8, 10 & newer
+  
+      - The newer Microsoft SQL Server Configuration Manager is a snap-in for the Microsoft Management Console Program.
+    
+      - It is not a stand-alone program as it used to be in the previous versions of Windows.
 
-  #### Before Widows 8
+      | Version | Search | Path |
+      |---|---|---|
+      | SQL Server 2019         | SQLServerManager15.msc |  C:\Windows\SysWOW64\SQLServerManager15.msc |
+      | SQL Server 2017         | SQLServerManager14.msc |  C:\Windows\SysWOW64\SQLServerManager14.msc |
+      | SQL Server 2016         | SQLServerManager13.msc |  C:\Windows\SysWOW64\SQLServerManager13.msc |
+      | SQL Server 2014 (12.x)  | SQLServerManager12.msc |  C:\Windows\SysWOW64\SQLServerManager12.msc |
+      | SQL Server 2012 (11.x)  | SQLServerManager11.msc |  C:\Windows\SysWOW64\SQLServerManager11.msc |
+      | SQL Server 2008         | SQLServerManager10.msc |  C:\Windows\SysWOW64\SQLServerManager10.msc |
 
-  Search in Windows start for "SQL Server Configuration Manager"
-
-
-  ![Sql Server Configuration Manager.png](SqlServerConfigurationManager.png)
-
-  #### Windows 8, 10 & newer
-
-  - The newer Microsoft SQL Server Configuration Manager is a snap-in for the Microsoft Management Console Program.
-
-  - It is not a stand-alone program as it used to be in the previous versions of Windows.
-
-
-  | Version | Search | Path |
-  |---|---|---|
-  | SQL Server 2019         | SQLServerManager15.msc |  C:\Windows\SysWOW64\SQLServerManager15.msc |
-  | SQL Server 2017         | SQLServerManager14.msc |  C:\Windows\SysWOW64\SQLServerManager14.msc |
-  | SQL Server 2016         | SQLServerManager13.msc |  C:\Windows\SysWOW64\SQLServerManager13.msc |
-  | SQL Server 2014 (12.x)  | SQLServerManager12.msc |  C:\Windows\SysWOW64\SQLServerManager12.msc |
-  | SQL Server 2012 (11.x)  | SQLServerManager11.msc |  C:\Windows\SysWOW64\SQLServerManager11.msc |
-  | SQL Server 2008         | SQLServerManager10.msc |  C:\Windows\SysWOW64\SQLServerManager10.msc |
-
-  ![Sql Server Manager.png](SqlServerManager.png)
-
-
-Open the **SQL Server Configuration Manager (Local)** > **SQL Server Network Configuration** menu and click the **Protocols for MSSQLSERVERXXXX** (where XXXX is the MSSQL version).
+      ![Sql Server Manager.png](SqlServerManager.png)
+  
+2. Open the **SQL Server Configuration Manager (Local)** > **SQL Server Network Configuration** menu and click the **Protocols for MSSQLSERVERXXXX** (where XXXX is the MSSQL version).
 
   ![sql server manager network protocol.png](sqlserver_manager_network_protocol.png)
 
-If `TCP/IP` protocol is `Disabled` as shown in the above image then follow the below steps to enable it else skip to step no. 4.
+  If `TCP/IP` protocol is `Disabled` as shown in the above image then follow the below steps to enable it.
 
-1. Double-click the `TCP/IP` protocol.
-2. Under Protocol tab set `Enabled` property `yes`.
+    1. Double-click the `TCP/IP` protocol.
+    2. Under Protocol tab set `Enabled` property `yes`.
 
-  ![sql server manager network protocol tab.png](sqlserver_manager_network_protocol_tab.png)
+      ![sql server manager network protocol tab.png](sqlserver_manager_network_protocol_tab.png)
 
-3. Click on Apply
-4. Go to `IP Addresses` to check on which TCP/IP port SQL Server is listening.
+    3. Click on Apply
+3. Double-click the TCP/IP protocol & go to `IP Addresses` to check on which TCP/IP port SQL Server is listening.
 
   ![sqlserver_manager_network_protocol_ip_addresses_tab.png](sqlserver_manager_network_protocol_ip_addresses_tab.png)
   
   in my case, it is listening on default port `1433`.
 
-5. Now we need to restart the SQL Server so the changes we made will take effect.
+4. Now we need to restart the SQL Server so the changes we made will take effect.
 
     Go to `SQL Server Configuration Manager (Local)` > `SQL Server Services`, right-click the `SQL Server (MSSQLSERVER) service` and press the `Restart` button to apply changes
 
@@ -85,13 +81,17 @@ There is one additional change we need to do to our connection string.
 
 You must be using the following connection string to connect to your SQL Server
 
-```
-Server=myServerAddress, myPortNumber;Database=myDataBase;User Id=myUsername;Password=myPassword;
+```json
+{
+    "ConnectionString": "Server=myServerAddress, myPortNumber;Database=myDataBase;User Id=myUsername;Password=myPassword;"
+}
 ```
 OR
 
-```
-Data Source=(local);Initial Catalog=myDataBase;User ID=myUsername;Password=myPassword;
+```json
+{
+    "ConnectionString": "Data Source=(local);Initial Catalog=myDataBase;User ID=myUsername;Password=myPassword;"
+}
 ```
 
 You have to change the database server address to your machine's IP address but your machine has a changing IP address (or none if you have no network access).
@@ -101,12 +101,17 @@ Docker 18.03 onward helps us with this with special DNS name `host.docker.intern
 > This is for development purposes and will not work in a production outside of Docker Desktop for Windows or Docker Desktop for Mac.
 
 You can now change the connection string as follows
-```
-Server=host.docker.internal, myPortNumber;Database=myDataBase;User Id=myUsername;Password=myPassword;
+
+```json
+{
+    "ConnectionString": "Server=host.docker.internal, myPortNumber;Database=myDataBase;User Id=myUsername;Password=myPassword;"
+}
 ```
 OR
 
-```
-Data Source=host.docker.internal;Initial Catalog=myDataBase;User ID=myUsername;Password=myPassword;
+```json
+{
+    "ConnectionString": "Data Source=host.docker.internal;Initial Catalog=myDataBase;User ID=myUsername;Password=myPassword;"
+}
 ```
 

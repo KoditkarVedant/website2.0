@@ -3,7 +3,7 @@ import BlogList from './containers/BlogList'
 import Blog from './containers/Blog'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import './App.css';
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
