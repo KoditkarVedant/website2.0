@@ -5,18 +5,32 @@ import ReactMarkdown from 'react-markdown'
 import { Link } from 'react-router-dom'
 import { allBlogs } from '../../util'
 import {IBlog} from '../../util/util.types'
+import format from 'date-fns/format'
 
 const Blog = styled.div`
-    & > .Blog__title {
-        font-size: 28px;
+    margin-bottom: 20px;
+    font-size: 16px;
+
+    .blog__title {
+        font-size: 24px;
+        text-decoration: none;
     }
 
-    & > .Blog__date {
-        font-size: 16px;
+    .blog__link {
+        display: flex;
+        justify-content: flex-end;
     }
 
-    & > .Blog__description {
-        font-size: 18px;
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+    }
+      
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
     }
 `
 
@@ -25,7 +39,7 @@ const BlogListWrapper = styled.div`
     flex-direction: column;
     margin-bottom: 20px;
 `
-
+const _dateFormatter = (date: string) => format(new Date(date), 'MMM dd, yyyy')
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState<IBlog[]>([])
@@ -40,11 +54,14 @@ const BlogList = () => {
         <BlogListWrapper>
             {map(blogs, blog => (
                 <Blog key={blog.id}>
-                    <Link to={`/blogs/${blog.id}`} className="Blog__title">{blog.title}</Link>
-                    <p className="Blog__date">{blog.date}</p>
-                    <div className="markdown-body">
+                    <Link to={`/blogs/${blog.id}`} className="blog__title">{blog.title}</Link>
+                    <p className="blog__date">{_dateFormatter(blog.date)}</p>
+                    <div className="blog__description markdown-body">
                         <ReactMarkdown source={blog.sneakpeek} />
                     </div>
+                    <Link to={`/blogs/${blog.id}`} className="blog__link">
+                        {'Continue reading >>'}
+                    </Link>
                 </Blog>
             ))}
         </BlogListWrapper>
