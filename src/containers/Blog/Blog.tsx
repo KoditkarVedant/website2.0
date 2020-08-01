@@ -46,12 +46,12 @@ const Blog = () => {
         )
     }
 
-    const imageRenderer = (props: any) => {
-        const isExternalImage = startsWith(toLower(props.src), 'http')
-        const imageSrc = isExternalImage ? props.src : require(`../../blogs/${id}/${props.src}`) // this sucks
+    const imageRenderer = ({ src, alt, ...rest }: any) => {
+        const isExternalImage = startsWith(toLower(src), 'http')
+        const imageSrc = isExternalImage ? src : require(`../../blogs/${id}/${src}`) // this sucks
 
         return (
-            <AsyncImage src={imageSrc} />
+            <AsyncImage src={imageSrc} alt={alt} />
         )
     }
 

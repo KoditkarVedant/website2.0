@@ -5,10 +5,11 @@ import { useIntersectionObserver } from './useIntersectionObserver'
 
 interface AsyncImageProps {
     src: string,
+    alt: string,
     width?: any
 }
 
-const AsyncImage = ({ src, ...rest }: AsyncImageProps) => {
+const AsyncImage = ({ src, alt, ...rest }: AsyncImageProps) => {
     const ref = useRef<HTMLDivElement | null>(null)
     const [isVisible, setIsVisible] = useState<boolean>(false)
 
@@ -31,7 +32,7 @@ const AsyncImage = ({ src, ...rest }: AsyncImageProps) => {
                             ? (
                                 <Spiner />
                             ) : (
-                                <img src={src} {...rest} />
+                                <img src={src} alt={alt} {...rest} />
                             )
                     }}
                 </ProgressiveImage>
