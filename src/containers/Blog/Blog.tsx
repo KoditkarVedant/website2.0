@@ -6,6 +6,7 @@ import Prism from 'prismjs'
 import Markdown from '../../components/Markdown'
 import styled from 'styled-components'
 import ReadTime from '../../components/ReadTime'
+import AsyncImage from '../../components/AsyncImage'
 
 const BlogWrapper = styled.div`
     .blog__metadata {
@@ -43,6 +44,13 @@ const Blog = () => {
         )
     }
 
+    const imageRenderer = (props: any) => {
+        console.log('Image', props)
+        return (
+            <AsyncImage src={props.src} />
+        )
+    }
+
     return (
         <BlogWrapper>
             <h1>{blog.title}</h1>
@@ -50,7 +58,7 @@ const Blog = () => {
                 <span className="blog__date">{dateFormatter(blog.date)}</span>
                 <ReadTime className="blog__readTime" minutes={blog.readTime} />
             </p>
-            <Markdown source={blog.data} className="markdown-body" />
+            <Markdown source={blog.data} className="markdown-body" renderers={{ image: imageRenderer}} />
         </BlogWrapper>
     )
 }
