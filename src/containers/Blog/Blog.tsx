@@ -7,6 +7,8 @@ import Markdown from '../../components/Markdown'
 import styled from 'styled-components'
 import ReadTime from '../../components/ReadTime'
 import AsyncImage from '../../components/AsyncImage'
+import startsWith from 'lodash/startsWith'
+import toLower from 'lodash/toLower'
 
 const BlogWrapper = styled.div`
     .blog__metadata {
@@ -45,9 +47,11 @@ const Blog = () => {
     }
 
     const imageRenderer = (props: any) => {
-        console.log('Image', props)
+        const isExternalImage = startsWith(toLower(props.src), 'http')
+        const imageSrc = isExternalImage ? props.src : require(`../../blogs/${id}/${props.src}`) // this sucks
+
         return (
-            <AsyncImage src={props.src} />
+            <AsyncImage src={imageSrc} />
         )
     }
 
@@ -58,7 +62,7 @@ const Blog = () => {
                 <span className="blog__date">{dateFormatter(blog.date)}</span>
                 <ReadTime className="blog__readTime" minutes={blog.readTime} />
             </p>
-            <Markdown source={blog.data} className="markdown-body" renderers={{ image: imageRenderer}} />
+            <Markdown source={blog.data} className="markdown-body" renderers={{ image: imageRenderer }} />
         </BlogWrapper>
     )
 }

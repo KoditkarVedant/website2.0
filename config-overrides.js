@@ -6,6 +6,5 @@ const {
 
 module.exports = override(
     useBabelRc(),
-    addWebpackModuleRule({ test: /\.md$/i, use: 'raw-loader' }),
-    addWebpackModuleRule({ test: /\.(md|markdown)$/, use: 'markdown-image-loader' })
+    addWebpackModuleRule({ test: /\.md$/i, use: 'raw-loader' })
 )
