@@ -30,7 +30,7 @@ export const allBlogs = async (): Promise<IBlog[]> => {
     const blogs = context.keys().map(context) as any[]
 
     const allBlogs: IBlog[] = blogs.map(blog => {
-        const data = blog
+        const data = blog.default
         const lines = data.split('\n')
 
         const indexes = getMetadataSectionIndexes(lines)
